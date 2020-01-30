@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>UV Metrics</title>
+</head>
+<body>
+    <div class="cards-container">
+        <div class="card intensity-card">
+            <h3>UV Intensity:</h3>
+            <p>{{ uvIntensity }}</p>
+        </div>
+    
+        <div class="card {% if uvIndex >= 0 and uvIndex < 3 %} bg-low-index {% elif uvIndex >= 0 and uvIndex < 6 %} bg-medium-index {% elif uvIndex >= 0 and uvIndex < 8 %} bg-high-index {% elif uvIndex >= 0 and uvIndex < 11 %} bg-very-high-index {% elif uvIndex >= 0 and uvIndex >= 11 %} bg-extreme-index {% else %} bg-no-data {% endif %}">
+            <h3>UV Index:</h3>
+            <p>{% if uvIndex == -1 %}No data{% else %}{{ uvIndex }}{% endif %}</p>
+        </div>
+    </div>
+</body>
+</html>
