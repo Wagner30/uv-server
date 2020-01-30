@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from uv_index_intensity.models import Data
 
@@ -30,3 +31,5 @@ def recordData(request):
     )
 
     data.save()
+
+    return JsonResponse({'message': 'Data was saved succesfully'})
